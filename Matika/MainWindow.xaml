@@ -3,10 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Matika" xmlns:controls="clr-namespace:Windows.UI.Xaml.Controls;assembly=Windows.Foundation.UniversalApiContract"
         mc:Ignorable="d"
         Title="Matika" Height="635" Width="402"
         Background="#1F1F1F">
+    
     <Window.Resources>
         <Style TargetType="Button" x:Key="ButtonStyle">
             <Setter Property="Background" Value="#060606"/>
@@ -26,11 +26,13 @@
         <Grid Margin="5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition/>
-                <RowDefinition Height="*"/>
-                <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition />
             </Grid.RowDefinitions>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                 <Button Background="Transparent" BorderBrush="Transparent">
@@ -40,9 +42,23 @@
                 <Label Content="Temperature" FontSize="30" Foreground="White" FontWeight="Regular"/>
             </StackPanel>
 
-            <Label Content="0" Grid.Row="1" Foreground="White" FontSize="35" FontWeight="SemiBold"/>
+            <TextBlock Text="0" Grid.Row="1" Foreground="White" FontSize="35" FontWeight="SemiBold" TextWrapping="Wrap"/>
+            
+            <ComboBox Grid.Row="2" Width="120" FontSize="15" HorizontalAlignment="Left">
+                <ComboBoxItem Content="Celsius"
+                              IsSelected="True"/>
+                <ComboBoxItem Content="Fahrenheit"/>
+                <ComboBoxItem Content="Kelvin"/>
+            </ComboBox>
 
-            <Label Content="0" Grid.Row="3" Foreground="White" FontSize="35" FontWeight="SemiBold"/>
+            <TextBlock Text="0" Grid.Row="3" Foreground="White" FontSize="35" FontWeight="SemiBold" TextWrapping="Wrap"/>
+
+            <ComboBox Grid.Row="4" Width="120" FontSize="15" HorizontalAlignment="Left">
+                <ComboBoxItem Content="Celsius"/>
+                <ComboBoxItem Content="Fahrenheit"
+                              IsSelected="True"/>
+                <ComboBoxItem Content="Kelvin"/>
+            </ComboBox>
         </Grid>
         
         <!--Button Grid-->
