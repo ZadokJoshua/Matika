@@ -13,6 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Calculations\Calculations.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Images\clear.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
