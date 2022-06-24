@@ -6,8 +6,9 @@
         mc:Ignorable="d"
         Title="Matika" Height="635" Width="402"
         Background="#1F1F1F">
-    
+
     <Window.Resources>
+        <!--Button Style-->
         <Style TargetType="Button" 
                x:Key="ButtonStyle">
             <Setter Property="Background" 
@@ -19,14 +20,44 @@
             <Setter Property="BorderBrush" 
                     Value="Transparent"/>
         </Style>
+
+        <!--TextBox-->
+        <!--TextBox Style Reference: https://stackoverflow.com/questions/40088370/wpf-text-box-border-changes-color-upon-mouse-entry-->
+        <Style TargetType="TextBox"
+               x:Key="TextBoxStyle">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border BorderThickness="{TemplateBinding Border.BorderThickness}"
+                  BorderBrush="{TemplateBinding Border.BorderBrush}"
+                  Background="{TemplateBinding Panel.Background}"
+                  Name="border"
+                  SnapsToDevicePixels="True">
+                            <ScrollViewer HorizontalScrollBarVisibility="Hidden"
+                           VerticalScrollBarVisibility="Hidden"
+                           Name="PART_ContentHost"
+                           Focusable="False" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                <Setter Property="Border.BorderBrush" TargetName="border" 
+                    Value="Transparent"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
     </Window.Resources>
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        
+
         <!--Output Display-->
         <Grid Margin="5">
             <Grid.RowDefinitions>
@@ -39,6 +70,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition />
             </Grid.RowDefinitions>
+
             <StackPanel Orientation="Horizontal" 
                         VerticalAlignment="Center">
                 <Button Background="Transparent" 
@@ -59,11 +91,14 @@
                      Foreground="White" 
                      FontSize="50" 
                      FontWeight="SemiBold"
-                     x:Name="txtBlock1"
+                     x:Name="txtBox1"
                      Background="Transparent"
                      BorderBrush="Transparent"
-                     IsReadOnly="True"/>
-            
+                     TextChanged="TextBox1_Changed"
+                     IsReadOnly="True"
+                     Style="{StaticResource TextBoxStyle}"/>
+            <!--IsReadOnly allows the TextBox to take input from the buttons only-->
+
             <ComboBox Grid.Row="2" 
                       Width="120" 
                       FontSize="15" 
@@ -76,11 +111,11 @@
                 <ComboBoxItem Content="Kelvin"/>
             </ComboBox>
 
-            <TextBlock Text="0" Grid.Row="3" 
+            <TextBox Text="0" Grid.Row="3" 
                        Foreground="White" 
                        FontSize="50" 
                        FontWeight="SemiBold"
-                       x:Name="txtBlock2"/>
+                       x:Name="txtBox2"/>
 
             <ComboBox Grid.Row="4" 
                       Width="120" 
@@ -94,7 +129,7 @@
                 <ComboBoxItem Content="Kelvin"/>
             </ComboBox>
         </Grid>
-        
+
         <!--Button Grid-->
         <Grid Grid.Row="1" Margin="4">
             <Grid.RowDefinitions>
@@ -116,85 +151,85 @@
                     Style="{StaticResource ButtonStyle}" 
                     Background="#131313"
                     x:Name="ceBtn"
-                    Click="btn_Click"/>
-            
-            <Button Grid.Column="2"  
+                    Click="Btn_Click"/>
+
+            <Button Grid.Column="1"  
                     Style="{StaticResource ButtonStyle}" 
                     Background="#131313"
                     x:Name="deleteBtn"
-                    Click="btn_Click">
+                    Click="DeleteBtn_Click" Grid.ColumnSpan="2" Margin="131,0,1,0">
                 <Image Source="\Images\clear.png" 
                        Grid.Column="2"  
                        Height="45"/>
             </Button>
-            
+
             <Button Content="7" 
                     Grid.Row="1" 
                     Style="{StaticResource ButtonStyle}"
                     x:Name="sevenBtn"
-                    Click="btn_Click"/>
+                    Click="Btn_Click"/>
             <Button Content="8" Grid.Row="1" 
                     Grid.Column="1" 
                     Style="{StaticResource ButtonStyle}"
                     x:Name="eightBtn"
-                    Click="btn_Click"/>
+                    Click="Btn_Click"/>
             <Button Content="9" 
                     Grid.Row="1" 
                     Grid.Column="2" 
                     Style="{StaticResource ButtonStyle}"
                     x:Name="nineBtn"
-                    Click="btn_Click"/>
+                    Click="Btn_Click"/>
             <Button Content="4" 
                     Grid.Row="2" 
                     Style="{StaticResource ButtonStyle}"
                     x:Name="fourBtn"
-                    Click="btn_Click"/>
+                    Click="Btn_Click"/>
             <Button Content="5" 
                     Grid.Row="2" 
                     Grid.Column="1" 
                     Style="{StaticResource ButtonStyle}"
                     x:Name="fiveBtn"
-                    Click="btn_Click"/>
+                    Click="Btn_Click"/>
             <Button Content="6" 
                     Grid.Row="2" 
                     Grid.Column="2" 
                     Style="{StaticResource ButtonStyle}"
                     x:Name="sixBtn"
-                    Click="btn_Click"/>
+                    Click="Btn_Click"/>
             <Button Content="1" 
                     Grid.Row="3" 
                     Style="{StaticResource ButtonStyle}"
                     x:Name="oneBtn"
-                    Click="btn_Click"/>
+                    Click="Btn_Click"/>
             <Button Content="2" 
                     Grid.Row="3" 
                     Grid.Column="1" 
                     Style="{StaticResource ButtonStyle}"
                     x:Name="twoBtn"
-                    Click="btn_Click"/>
+                    Click="Btn_Click"/>
             <Button Content="3" 
                     Grid.Row="3" 
                     Grid.Column="2" 
                     Style="{StaticResource ButtonStyle}"
                     x:Name="threeBtn"
-                    Click="btn_Click"/>
+                    Click="Btn_Click"/>
             <Button Content="+/-" 
                     Grid.Row="4" 
                     Style="{StaticResource ButtonStyle}"
                     x:Name="plusOrMinusBtn"
-                    Click="btn_Click"/>
+                    Click="Btn_Click"/>
             <Button Content="0" 
                     Grid.Row="4" 
                     Grid.Column="1" 
                     Style="{StaticResource ButtonStyle}"
                     x:Name="zeroBtn"
-                    Click="btn_Click"/>
+                    Click="Btn_Click"/>
             <Button Content="." 
                     Grid.Row="4" 
                     Grid.Column="2" 
                     Style="{StaticResource ButtonStyle}"
                     x:Name="dotBtn"
-                    Click="btn_Click"/>
+                    Click="Btn_Click"/>
         </Grid>
     </Grid>
 </Window>

@@ -26,66 +26,79 @@ namespace Matika
             InitializeComponent();
         }
 
-        private void btn_Click(object sender, RoutedEventArgs e)
+        private void DeleteBtn_Click(object sender, RoutedEventArgs e)
         {
+            var temp = txtBlock1.Text;
+            var length = temp.Count();
+            temp = txtBlock1.Text.Remove(length - 1);
+
+            if (txtBlock1.Text != "0") 
+            { 
+                txtBlock1.Text = temp; 
+            }
+           
+        }
+
+        private void Btn_Click(object sender, RoutedEventArgs e)
+        {
+            int selectedValue = 0;
 
             if(sender == sevenBtn)
             {
-                txtBlock1.Text = $"{txtBlock1.Text}7";
-                
+                selectedValue = 7;
             }
-            else if (sender == eightBtn)
+            if (sender == eightBtn)
             {
-                txtBlock1.Text = $"{txtBlock1.Text}8";
+                selectedValue = 8;
             }
-            else if (sender == nineBtn)
+            if (sender == nineBtn)
             {
-                txtBlock1.Text = $"{txtBlock1.Text}9";
+                selectedValue = 9;
             }
-            else if (sender == fourBtn)
+            if (sender == fourBtn)
             {
-                txtBlock1.Text = $"{txtBlock1.Text}4";
+                selectedValue = 4;
             }
-            else if (sender == fiveBtn)
+            if (sender == fiveBtn)
             {
-                txtBlock1.Text = $"{txtBlock1.Text}5";
+                selectedValue = 5;
             }
-            else if (sender == sixBtn)
+            if (sender == sixBtn)
             {
-                txtBlock1.Text = $"{txtBlock1.Text}6";
+                selectedValue = 6;
             }
-            else if (sender == threeBtn)
+            if (sender == threeBtn)
             {
-                txtBlock1.Text = $"{txtBlock1.Text}3";
+                selectedValue = 3;
             }
-            else if (sender == twoBtn)
+            if (sender == twoBtn)
             {
-                txtBlock1.Text = $"{txtBlock1.Text}2";
+                selectedValue = 2;
             }
-            else if (sender == oneBtn)
+            if (sender == oneBtn)
             {
-                txtBlock1.Text = $"{txtBlock1.Text}1";
+                selectedValue = 1;
             }
-            else if (sender == dotBtn)
-            {
-                txtBlock1.Text = $"{txtBlock1.Text}.";
-            }
-            else if (sender == ceBtn)
+            if (sender == ceBtn)
             {
                 txtBlock1.Text = "0";
             }
-            else if (sender == deleteBtn)
+
+
+            if (txtBlock1.Text == "0")
             {
-                var temp = txtBlock1.Text;
-                var length = temp.Count();
-                temp = txtBlock1.Text.Remove(length - 1);
-                if (txtBlock1.Text != "0") { txtBlock1.Text = temp; }
+                txtBlock1.Text = $"{selectedValue}";
+            }
+            else
+            {
+                txtBlock1.Text = $"{txtBlock1.Text}{selectedValue}";
             }
         }
 
-
-
-        
+        private void TextBox_Changed(object sender, TextChangedEventArgs e)
+        {
+            //txtBlock2.Text = txtBlock1.Text;
+        }
     }
 
 }
