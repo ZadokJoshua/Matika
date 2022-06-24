@@ -97,7 +97,7 @@ namespace Matika
 
         private void TextBox1_Changed(object sender, TextChangedEventArgs e)
         {
-            //txtBlock2.Text = txtBox1.Text;
+            //txtBox2.Text = txtBox1.Text;
         }
     }
 

@@ -96,7 +96,7 @@
                      BorderBrush="Transparent"
                      TextChanged="TextBox1_Changed"
                      IsReadOnly="True"
-                     />
+                     Style="{StaticResource TextBoxStyle}"/>
             <!--IsReadOnly allows the TextBox to take input from the buttons only-->
 
             <ComboBox Grid.Row="2" 
