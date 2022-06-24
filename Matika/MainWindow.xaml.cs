@@ -28,13 +28,13 @@ namespace Matika
 
         private void DeleteBtn_Click(object sender, RoutedEventArgs e)
         {
-            var temp = txtBlock1.Text;
+            var temp = txtBox1.Text;
             var length = temp.Count();
-            temp = txtBlock1.Text.Remove(length - 1);
+            temp = txtBox1.Text.Remove(length - 1);
 
-            if (txtBlock1.Text != "0") 
+            if (txtBox1.Text != "0") 
             { 
-                txtBlock1.Text = temp; 
+                txtBox1.Text = temp; 
             }
            
         }
@@ -81,23 +81,23 @@ namespace Matika
             }
             if (sender == ceBtn)
             {
-                txtBlock1.Text = "0";
+                txtBox1.Text = "0";
             }
 
 
-            if (txtBlock1.Text == "0")
+            if (txtBox1.Text == "0")
             {
-                txtBlock1.Text = $"{selectedValue}";
+                txtBox1.Text = $"{selectedValue}";
             }
             else
             {
-                txtBlock1.Text = $"{txtBlock1.Text}{selectedValue}";
+                txtBox1.Text = $"{txtBox1.Text}{selectedValue}";
             }
         }
 
-        private void TextBox_Changed(object sender, TextChangedEventArgs e)
+        private void TextBox1_Changed(object sender, TextChangedEventArgs e)
         {
-            //txtBlock2.Text = txtBlock1.Text;
+            //txtBlock2.Text = txtBox1.Text;
         }
     }
 

@@ -96,7 +96,7 @@
                      BorderBrush="Transparent"
                      TextChanged="TextBox1_Changed"
                      IsReadOnly="True"
-                     Style="{StaticResource TextBoxStyle}"/>
+                     />
             <!--IsReadOnly allows the TextBox to take input from the buttons only-->
 
             <ComboBox Grid.Row="2" 
@@ -112,10 +112,15 @@
             </ComboBox>
 
             <TextBox Text="0" Grid.Row="3" 
-                       Foreground="White" 
-                       FontSize="50" 
-                       FontWeight="SemiBold"
-                       x:Name="txtBox2"/>
+                     Foreground="White" 
+                     FontSize="50" 
+                     FontWeight="SemiBold"
+                     x:Name="txtBox2"
+                     Background="Transparent"
+                     BorderBrush="Transparent"
+                     TextChanged="TextBox1_Changed"
+                     IsReadOnly="True"
+                     Style="{StaticResource TextBoxStyle}"/>
 
             <ComboBox Grid.Row="4" 
                       Width="120" 
