@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Calculations.Converter;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,8 +36,7 @@ namespace Matika
             if (txtBox1.Text != "0") 
             { 
                 txtBox1.Text = temp; 
-            }
-           
+            }  
         }
 
         private void Btn_Click(object sender, RoutedEventArgs e)
@@ -97,7 +97,41 @@ namespace Matika
 
         private void TextBox1_Changed(object sender, TextChangedEventArgs e)
         {
-            //txtBox2.Text = txtBox1.Text;
+            var temperature = new Temperature();
+            double _output = double.Parse(txtBox1.Text);
+           // var comboBoxOne = comboBox1.SelectedItem.ToString();
+            // var comboBoxTwo = comboBox2.SelectedItem.ToString();
+
+
+            if (comboBox1.  && comboBoxTwo == "Fahrenheit")
+            {
+                _output = temperature.CelsiusToFahrenheit(_output);
+            }
+
+            if (txtBox1.Text != "0")
+            {
+                //string temp = txtBox1.Text;
+                txtBox2.Text = _output.ToString(); 
+            }
+        }
+
+        private void DotBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (txtBox1.Text.Contains("."))
+            {
+                // Do nothing
+            }
+            else
+            {
+                txtBox1.Text = $"{txtBox1.Text}.";
+            }
+        }
+
+        private void plusOrMinusBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var temp = double.Parse(txtBox1.Text);
+            var answer = temp * -1.0;
+            txtBox1.Text = answer.ToString();
         }
     }
 

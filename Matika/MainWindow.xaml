@@ -222,7 +222,7 @@
                     Grid.Row="4" 
                     Style="{StaticResource ButtonStyle}"
                     x:Name="plusOrMinusBtn"
-                    Click="Btn_Click"/>
+                    Click="plusOrMinusBtn_Click"/>
             <Button Content="0" 
                     Grid.Row="4" 
                     Grid.Column="1" 
@@ -234,7 +234,7 @@
                     Grid.Column="2" 
                     Style="{StaticResource ButtonStyle}"
                     x:Name="dotBtn"
-                    Click="Btn_Click"/>
+                    Click="DotBtn_Click"/>
         </Grid>
     </Grid>
 </Window>
