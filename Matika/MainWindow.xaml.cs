@@ -22,6 +22,7 @@ namespace Matika
     public partial class MainWindow : Window
     {
 
+
         public MainWindow()
         {
             InitializeComponent();
@@ -31,11 +32,20 @@ namespace Matika
         {
             var temp = txtBox1.Text;
             var length = temp.Count();
-            temp = txtBox1.Text.Remove(length - 1);
 
             if (txtBox1.Text != "0") 
             { 
-                txtBox1.Text = temp; 
+                if(length < 2)
+                {
+                    txtBox1.Text = "0";
+                    txtBox2.Text = "0";
+                }
+                else
+                {
+
+                    temp = txtBox1.Text.Remove(length - 1);
+                    txtBox1.Text = temp;
+                }
             }  
         }
 
@@ -97,16 +107,15 @@ namespace Matika
 
         private void TextBox1_Changed(object sender, TextChangedEventArgs e)
         {
+            double _output;
             var temperature = new Temperature();
-            double _output = double.Parse(txtBox1.Text);
-           // var comboBoxOne = comboBox1.SelectedItem.ToString();
-            // var comboBoxTwo = comboBox2.SelectedItem.ToString();
+            double.TryParse(txtBox1.Text, out _output);
+            string temp = comboBox1?.SelectedValue.ToString();
+            string temp1 = comboBox2?.SelectedValue.ToString();
 
 
-            if (comboBox1.  && comboBoxTwo == "Fahrenheit")
-            {
-                _output = temperature.CelsiusToFahrenheit(_output);
-            }
+            _output = temperature.CelsiusToFahrenheit(_output);
+
 
             if (txtBox1.Text != "0")
             {
