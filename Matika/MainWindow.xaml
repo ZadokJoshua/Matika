@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
+                MinHeight="600"
+        MinWidth="400"
         Title="Matika" Height="635" Width="402"
         Background="#1F1F1F">
 
@@ -157,13 +159,12 @@
                     x:Name="ceBtn"
                     Click="Btn_Click"/>
 
-            <Button Grid.Column="1"  
+            <Button Grid.Column="2"  
                     Style="{StaticResource ButtonStyle}" 
                     Background="#131313"
                     x:Name="deleteBtn"
-                    Click="DeleteBtn_Click" Grid.ColumnSpan="2" Margin="131,0,1,0">
+                    Click="DeleteBtn_Click" Grid.ColumnSpan="2">
                 <Image Source="\Images\clear.png" 
-                       Grid.Column="2"  
                        Height="45"/>
             </Button>
 

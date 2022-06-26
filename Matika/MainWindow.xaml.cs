@@ -131,7 +131,6 @@ namespace Matika
                 //string temp = txtBox1.Text;
                 txtBox2.Text = _output.ToString(); 
             }
-            MessageBox.Show(temp1);
         }
 
         private void DotBtn_Click(object sender, RoutedEventArgs e)
