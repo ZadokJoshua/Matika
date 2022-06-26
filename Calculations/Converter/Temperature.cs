@@ -18,7 +18,7 @@ namespace Calculations.Converter
 
         public double CelsiusToFahrenheit(double temperature)
         {
-            _output = (temperature * (9 / 5))  + 32;
+            _output = (temperature * (9 / 5)) + 32;
             return _output;
         }
 

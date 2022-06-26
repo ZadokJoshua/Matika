@@ -92,6 +92,7 @@ namespace Matika
             if (sender == ceBtn)
             {
                 txtBox1.Text = "0";
+                txtBox2.Text = "0";
             }
 
 
@@ -110,11 +111,19 @@ namespace Matika
             double _output;
             var temperature = new Temperature();
             double.TryParse(txtBox1.Text, out _output);
-            string temp = comboBox1?.SelectedValue.ToString();
-            string temp1 = comboBox2?.SelectedValue.ToString();
+            string temp = comboBox1?.Text;
+            string temp1 = comboBox2?.Text;
 
+            if (temp is "Celsius" && temp1 is "Fahrenheit")
+            {
+                _output = temperature.CelsiusToFahrenheit(_output);
+            }
 
-            _output = temperature.CelsiusToFahrenheit(_output);
+            if (temp is "Kelvin" && temp1 is "Fahrenheit")
+            {
+                _output = temperature.KelvinToFahrenheit(_output);
+            }
+
 
 
             if (txtBox1.Text != "0")
@@ -122,6 +131,7 @@ namespace Matika
                 //string temp = txtBox1.Text;
                 txtBox2.Text = _output.ToString(); 
             }
+            MessageBox.Show(temp1);
         }
 
         private void DotBtn_Click(object sender, RoutedEventArgs e)
