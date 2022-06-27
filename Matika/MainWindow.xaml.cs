@@ -21,7 +21,9 @@ namespace Matika
     /// </summary>
     public partial class MainWindow : Window
     {
+        public List<string> SourceTemp { get; private set; } = new List<string>() { "Celsius", "Fahrenheit", "Kelvin"};
 
+        public string SourceTempSelectedItem { get; set; }
 
         public MainWindow()
         {
@@ -51,59 +53,25 @@ namespace Matika
 
         private void Btn_Click(object sender, RoutedEventArgs e)
         {
-            int selectedValue = 0;
+            var selectedValue = ((Button)sender).Content;
 
-            if(sender == sevenBtn)
-            {
-                selectedValue = 7;
-            }
-            if (sender == eightBtn)
-            {
-                selectedValue = 8;
-            }
-            if (sender == nineBtn)
-            {
-                selectedValue = 9;
-            }
-            if (sender == fourBtn)
-            {
-                selectedValue = 4;
-            }
-            if (sender == fiveBtn)
-            {
-                selectedValue = 5;
-            }
-            if (sender == sixBtn)
-            {
-                selectedValue = 6;
-            }
-            if (sender == threeBtn)
-            {
-                selectedValue = 3;
-            }
-            if (sender == twoBtn)
-            {
-                selectedValue = 2;
-            }
-            if (sender == oneBtn)
-            {
-                selectedValue = 1;
-            }
-            if (sender == ceBtn)
+            if (selectedValue is "CE")
             {
                 txtBox1.Text = "0";
                 txtBox2.Text = "0";
             }
-
-
-            if (txtBox1.Text == "0")
-            {
-                txtBox1.Text = $"{selectedValue}";
-            }
             else
             {
-                txtBox1.Text = $"{txtBox1.Text}{selectedValue}";
+                if (txtBox1.Text == "0")
+                {
+                    txtBox1.Text = $"{selectedValue}";
+                }
+                else
+                {
+                    txtBox1.Text = $"{txtBox1.Text}{selectedValue}";
+                }
             }
+
         }
 
         private void TextBox1_Changed(object sender, TextChangedEventArgs e)

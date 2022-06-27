@@ -4,8 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-                MinHeight="600"
+        MinHeight="600"
         MinWidth="400"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
         Title="Matika" Height="635" Width="402"
         Background="#1F1F1F">
 
@@ -27,6 +28,13 @@
         <!--TextBox Style Reference: https://stackoverflow.com/questions/40088370/wpf-text-box-border-changes-color-upon-mouse-entry-->
         <Style TargetType="TextBox"
                x:Key="TextBoxStyle">
+            <Setter Property="Text" Value="0"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="50"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="IsReadOnly" Value="True"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="TextBox">
@@ -49,6 +57,17 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+        </Style>
+
+        
+        <!--ComboBox Style-->
+        <Style x:Key="ComboBoxStyle" 
+               TargetType="ComboBox">
+            <Setter Property="Width" Value="120"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="ItemsSource" Value="{Binding SourceTemp}"/>
         </Style>
 
     </Window.Resources>
@@ -87,53 +106,26 @@
                        FontWeight="Regular"/>
             </StackPanel>
 
-            <TextBox Text="0" 
-                     Grid.Row="1" 
-                     Foreground="White" 
-                     FontSize="50" 
-                     FontWeight="SemiBold"
+            <TextBox Grid.Row="1" 
                      x:Name="txtBox1"
-                     Background="Transparent"
-                     BorderBrush="Transparent"
                      TextChanged="TextBox1_Changed"
-                     IsReadOnly="True"
                      Style="{StaticResource TextBoxStyle}"/>
             <!--IsReadOnly allows the TextBox to take input from the buttons only-->
 
             <ComboBox Grid.Row="2" 
-                      Width="120" 
-                      FontSize="15" 
-                      HorizontalAlignment="Left"
                       x:Name="comboBox1"
-                      Margin="5">
-                <ComboBoxItem Content="Celsius"
-                              IsSelected="True"/>
-                <ComboBoxItem Content="Fahrenheit"/>
-                <ComboBoxItem Content="Kelvin"/>
-            </ComboBox>
+                      Style="{StaticResource ComboBoxStyle}"
+                      SelectedIndex="0"/>
 
-            <TextBox Text="0" Grid.Row="3" 
-                     Foreground="White" 
-                     FontSize="50" 
-                     FontWeight="SemiBold"
+            <TextBox Grid.Row="3" 
                      x:Name="txtBox2"
-                     Background="Transparent"
-                     BorderBrush="Transparent"
                      TextChanged="TextBox1_Changed"
-                     IsReadOnly="True"
                      Style="{StaticResource TextBoxStyle}"/>
 
             <ComboBox Grid.Row="4" 
-                      Width="120" 
-                      FontSize="15" 
-                      HorizontalAlignment="Left"
                       x:Name="comboBox2"
-                      Margin="5">
-                <ComboBoxItem Content="Celsius"/>
-                <ComboBoxItem Content="Fahrenheit"
-                              IsSelected="True"/>
-                <ComboBoxItem Content="Kelvin"/>
-            </ComboBox>
+                      Style="{StaticResource ComboBoxStyle}"
+                      SelectedIndex="1"/>
         </Grid>
 
         <!--Button Grid-->
