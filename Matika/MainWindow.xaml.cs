@@ -79,15 +79,15 @@ namespace Matika
             double _output;
             var temperature = new Temperature();
             double.TryParse(txtBox1.Text, out _output);
-            string temp = comboBox1?.Text;
-            string temp1 = comboBox2?.Text;
+            string item1 = comboBox1?.Text;
+            string item2 = comboBox2?.Text;
 
-            if (temp is "Celsius" && temp1 is "Fahrenheit")
+            if (item1 is "Celsius" && item2 is "Fahrenheit")
             {
                 _output = temperature.CelsiusToFahrenheit(_output);
             }
 
-            if (temp is "Kelvin" && temp1 is "Fahrenheit")
+            if (item1 is "Kelvin" && item2 is "Fahrenheit")
             {
                 _output = temperature.KelvinToFahrenheit(_output);
             }
@@ -96,7 +96,6 @@ namespace Matika
 
             if (txtBox1.Text != "0")
             {
-                //string temp = txtBox1.Text;
                 txtBox2.Text = _output.ToString(); 
             }
         }
