@@ -35,9 +35,9 @@ namespace Matika
             var temp = txtBox1.Text;
             var length = temp.Count();
 
-            if (txtBox1.Text != "0") 
-            { 
-                if(length < 2)
+            if (txtBox1.Text != "0")
+            {
+                if (length < 2)
                 {
                     txtBox1.Text = "0";
                     txtBox2.Text = "0";
@@ -47,7 +47,7 @@ namespace Matika
                     temp = txtBox1.Text.Remove(length - 1);
                     txtBox1.Text = temp;
                 }
-            }  
+            }
         }
 
         private void Btn_Click(object sender, RoutedEventArgs e)
@@ -57,7 +57,7 @@ namespace Matika
             if (selectedValue is "CE")
             {
                 txtBox1.Text = "0";
-                //txtBox2.Text = "0";
+                txtBox2.Text = "0";
             }
             else
             {
@@ -75,11 +75,36 @@ namespace Matika
 
         private void TextBox1_Changed(object sender, TextChangedEventArgs e)
         {
+            ChangedEventHandler(comboBox1, comboBox2);
+        }
+
+        private void DotBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (txtBox1.Text.Contains("."))
+            {
+                // Do nothing
+            }
+            else
+            {
+                txtBox1.Text = $"{txtBox1.Text}.";
+            }
+        }
+
+        private void plusOrMinusBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var temp = double.Parse(txtBox1.Text);
+            var answer = temp * -1.0;
+            txtBox1.Text = answer.ToString();
+        }
+
+        private void ChangedEventHandler(ComboBox comboBox1, ComboBox comboBox2)
+        {
             double _output;
             var temperature = new Temperature();
             double.TryParse(txtBox1.Text, out _output);
             string item1 = comboBox1?.Text;
             string item2 = comboBox2?.Text;
+
 
             if (item1 is "Celsius" && item2 is "Fahrenheit")
             {
@@ -113,27 +138,82 @@ namespace Matika
 
             if (txtBox1.Text != "0")
             {
-                txtBox2.Text = _output.ToString(); 
+                txtBox2.Text = _output.ToString();
             }
         }
 
-        private void DotBtn_Click(object sender, RoutedEventArgs e)
+        private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (txtBox1.Text.Contains("."))
-            {
-                // Do nothing
-            }
-            else
-            {
-                txtBox1.Text = $"{txtBox1.Text}.";
-            }
-        }
+            //ChangedEventHandler(comboBox1, comboBox2);
+            //double _output;
+            //var temperature = new Temperature();
+            //double.TryParse(txtBox1.Text, out _output);
+            //string item1 = comboBox1?.SelectedIndex.ToString();
+            //string item2 = comboBox2?.SelectedIndex.ToString();
 
-        private void plusOrMinusBtn_Click(object sender, RoutedEventArgs e)
-        {
-            var temp = double.Parse(txtBox1.Text);
-            var answer = temp * -1.0;
-            txtBox1.Text = answer.ToString();
+            //if (sender == comboBox1)
+            //{
+            //    if (item1 is "Celsius")
+            //    {
+            //        if(item2 is "Celsius")
+            //        {
+            //            _output = temperature.CelsiusToCelsius(_output);
+            //            txtBox2.Text = _output.ToString();
+            //        }
+
+            //        if (item2 is "Fahrenheit")
+            //        {
+            //            _output = temperature.CelsiusToFahrenheit(_output);
+            //            txtBox2.Text = _output.ToString();
+            //        }
+
+            //        if (item2 is "Kelvin")
+            //        {
+            //            _output = temperature.CelsiusToKelvin(_output);
+            //        }
+            //    }
+
+            //    if (item1 is "Fahrenheit")
+            //    {
+            //        if (item2 is "Fahrenheit")
+            //        {
+            //            _output = temperature.FahrenheitToFahrenheit(_output);
+            //        }
+
+            //        if (item2 is "Celsius")
+            //        {
+            //            _output = temperature.FahrenheitToCelsius(_output);
+            //        }
+
+            //        if (item2 is "Kelvin")
+            //        {
+            //            _output = temperature.FahrenheitToKelvin(_output);
+            //        }
+            //    }
+
+            //    if (item1 is "Kelvin")
+            //    {
+            //        if (item2 is "Kelvin")
+            //        {
+            //            _output = temperature.KelvinToKelvin(_output);
+            //        }
+
+            //        if (item2 is "Celsius")
+            //        {
+            //            _output = temperature.KelvinToCelsius(_output);
+            //        }
+
+            //        if (item2 is "Fahrenheit")
+            //        {
+            //            _output = temperature.KelvinToFahrenheit(_output);
+            //        }
+            //    }
+
+            //if (txtBox1.Text != "0")
+            //{
+            //    txtBox2.Text = _output.ToString();
+            //}
+        //}
         }
     }
 

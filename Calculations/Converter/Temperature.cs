@@ -10,6 +10,24 @@ namespace Calculations.Converter
     {
         private double _output; 
 
+        public double CelsiusToCelsius(double temperature)
+        {
+            _output = temperature;
+            return _output;
+        }
+
+        public double KelvinToKelvin(double temperature)
+        {
+            _output = temperature;
+            return _output;
+        }
+
+        public double FahrenheitToFahrenheit(double temperature)
+        {
+            _output = temperature;
+            return _output;
+        }
+
         public double CelsiusToKelvin(double temperature)
         {
             _output = temperature + 273.15;

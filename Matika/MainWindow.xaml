@@ -115,7 +115,8 @@
             <ComboBox Grid.Row="2" 
                       x:Name="comboBox1"
                       Style="{StaticResource ComboBoxStyle}"
-                      SelectedIndex="0"/>
+                      SelectedIndex="0"
+                      SelectionChanged="comboBox_SelectionChanged"/>
 
             <TextBox Grid.Row="3" 
                      x:Name="txtBox2"
@@ -125,7 +126,8 @@
             <ComboBox Grid.Row="4" 
                       x:Name="comboBox2"
                       Style="{StaticResource ComboBoxStyle}"
-                      SelectedIndex="1"/>
+                      SelectedIndex="1"
+                      SelectionChanged="comboBox_SelectionChanged"/>
         </Grid>
 
         <!--Button Grid-->
@@ -160,7 +162,7 @@
                        Height="45"/>
             </Button>
 
-            <Button Content="7" 
+            <Button Content="7"
                     Grid.Row="1" 
                     Style="{StaticResource ButtonStyle}"
                     x:Name="sevenBtn"
