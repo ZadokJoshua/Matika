@@ -57,7 +57,7 @@ namespace Matika
             if (selectedValue is "CE")
             {
                 txtBox1.Text = "0";
-                txtBox2.Text = "0";
+                //txtBox2.Text = "0";
             }
             else
             {
