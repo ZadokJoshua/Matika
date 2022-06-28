@@ -44,7 +44,6 @@ namespace Matika
                 }
                 else
                 {
-
                     temp = txtBox1.Text.Remove(length - 1);
                     txtBox1.Text = temp;
                 }
@@ -87,12 +86,30 @@ namespace Matika
                 _output = temperature.CelsiusToFahrenheit(_output);
             }
 
+            if (item1 is "Celsius" && item2 is "Kelvin")
+            {
+                _output = temperature.CelsiusToKelvin(_output);
+            }
+
+            if (item1 is "Kelvin" && item2 is "Celsius")
+            {
+                _output = temperature.KelvinToCelsius(_output);
+            }
+
             if (item1 is "Kelvin" && item2 is "Fahrenheit")
             {
                 _output = temperature.KelvinToFahrenheit(_output);
             }
 
+            if (item1 is "Fahrenheit" && item2 is "Celsius")
+            {
+                _output = temperature.FahrenheitToCelsius(_output);
+            }
 
+            if (item1 is "Fahrenheit" && item2 is "Kelvin")
+            {
+                _output = temperature.FahrenheitToKelvin(_output);
+            }
 
             if (txtBox1.Text != "0")
             {
