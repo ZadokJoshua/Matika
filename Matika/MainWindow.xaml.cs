@@ -91,75 +91,7 @@ namespace Matika
 
         private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //double _output;
-            //var temperature = new Temperature();
-            //double.TryParse(txtBox1.Text, out _output);
-            //string item1 = comboBox1?.SelectedIndex.ToString();
-            //string item2 = comboBox2?.SelectedIndex.ToString();
-
-            //if (sender == comboBox1)
-            //{
-            //    if (item1 is "Celsius")
-            //    {
-            //        if(item2 is "Celsius")
-            //        {
-            //            _output = temperature.CelsiusToCelsius(_output);
-            //            txtBox2.Text = _output.ToString();
-            //        }
-
-            //        if (item2 is "Fahrenheit")
-            //        {
-            //            _output = temperature.CelsiusToFahrenheit(_output);
-            //            txtBox2.Text = _output.ToString();
-            //        }
-
-            //        if (item2 is "Kelvin")
-            //        {
-            //            _output = temperature.CelsiusToKelvin(_output);
-            //        }
-            //    }
-
-            //    if (item1 is "Fahrenheit")
-            //    {
-            //        if (item2 is "Fahrenheit")
-            //        {
-            //            _output = temperature.FahrenheitToFahrenheit(_output);
-            //        }
-
-            //        if (item2 is "Celsius")
-            //        {
-            //            _output = temperature.FahrenheitToCelsius(_output);
-            //        }
-
-            //        if (item2 is "Kelvin")
-            //        {
-            //            _output = temperature.FahrenheitToKelvin(_output);
-            //        }
-            //    }
-
-            //    if (item1 is "Kelvin")
-            //    {
-            //        if (item2 is "Kelvin")
-            //        {
-            //            _output = temperature.KelvinToKelvin(_output);
-            //        }
-
-            //        if (item2 is "Celsius")
-            //        {
-            //            _output = temperature.KelvinToCelsius(_output);
-            //        }
-
-            //        if (item2 is "Fahrenheit")
-            //        {
-            //            _output = temperature.KelvinToFahrenheit(_output);
-            //        }
-            //    }
-
-            //if (txtBox1.Text != "0")
-            //{
-            //    txtBox2.Text = _output.ToString();
-            //}
-            //}
+            ChangedEventHandler(comboBox1, comboBox2);
         }
 
         private void plusOrMinusBtn_Click(object sender, RoutedEventArgs e)
@@ -214,7 +146,7 @@ namespace Matika
             }
         }
 
-
+    
     }
 
 }
