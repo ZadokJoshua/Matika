@@ -116,7 +116,7 @@
                       x:Name="comboBox1"
                       Style="{StaticResource ComboBoxStyle}"
                       SelectedIndex="0"
-                      SelectionChanged="comboBox_SelectionChanged"/>
+                      SelectionChanged="comboBox_SelectionChanged" Margin="6,5,0,5"/>
 
             <TextBox Grid.Row="3" 
                      x:Name="txtBox2"
@@ -228,7 +228,7 @@
                     Grid.Column="2" 
                     Style="{StaticResource ButtonStyle}"
                     x:Name="dotBtn"
-                    Click="DotBtn_Click"/>
+                    Click="Btn_Click"/>
         </Grid>
     </Grid>
 </Window>

@@ -59,6 +59,17 @@ namespace Matika
                 txtBox1.Text = "0";
                 txtBox2.Text = "0";
             }
+            else if(selectedValue is ".")
+            {
+                if (txtBox1.Text.Contains("."))
+                {
+                    // Do nothing
+                }
+                else
+                {
+                    txtBox1.Text = $"{txtBox1.Text}.";
+                }
+            }
             else
             {
                 if (txtBox1.Text == "0")
@@ -78,73 +89,8 @@ namespace Matika
             ChangedEventHandler(comboBox1, comboBox2);
         }
 
-        private void DotBtn_Click(object sender, RoutedEventArgs e)
-        {
-            if (txtBox1.Text.Contains("."))
-            {
-                // Do nothing
-            }
-            else
-            {
-                txtBox1.Text = $"{txtBox1.Text}.";
-            }
-        }
-
-        private void plusOrMinusBtn_Click(object sender, RoutedEventArgs e)
-        {
-            var temp = double.Parse(txtBox1.Text);
-            var answer = temp * -1.0;
-            txtBox1.Text = answer.ToString();
-        }
-
-        private void ChangedEventHandler(ComboBox comboBox1, ComboBox comboBox2)
-        {
-            double _output;
-            var temperature = new Temperature();
-            double.TryParse(txtBox1.Text, out _output);
-            string item1 = comboBox1?.Text;
-            string item2 = comboBox2?.Text;
-
-
-            if (item1 is "Celsius" && item2 is "Fahrenheit")
-            {
-                _output = temperature.CelsiusToFahrenheit(_output);
-            }
-
-            if (item1 is "Celsius" && item2 is "Kelvin")
-            {
-                _output = temperature.CelsiusToKelvin(_output);
-            }
-
-            if (item1 is "Kelvin" && item2 is "Celsius")
-            {
-                _output = temperature.KelvinToCelsius(_output);
-            }
-
-            if (item1 is "Kelvin" && item2 is "Fahrenheit")
-            {
-                _output = temperature.KelvinToFahrenheit(_output);
-            }
-
-            if (item1 is "Fahrenheit" && item2 is "Celsius")
-            {
-                _output = temperature.FahrenheitToCelsius(_output);
-            }
-
-            if (item1 is "Fahrenheit" && item2 is "Kelvin")
-            {
-                _output = temperature.FahrenheitToKelvin(_output);
-            }
-
-            if (txtBox1.Text != "0")
-            {
-                txtBox2.Text = _output.ToString();
-            }
-        }
-
         private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //ChangedEventHandler(comboBox1, comboBox2);
             //double _output;
             //var temperature = new Temperature();
             //double.TryParse(txtBox1.Text, out _output);
@@ -213,8 +159,62 @@ namespace Matika
             //{
             //    txtBox2.Text = _output.ToString();
             //}
-        //}
+            //}
         }
+
+        private void plusOrMinusBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var temp = double.Parse(txtBox1.Text);
+            var answer = temp * -1.0;
+            txtBox1.Text = answer.ToString();
+        }
+
+        private void ChangedEventHandler(ComboBox comboBox1, ComboBox comboBox2)
+        {
+            double _output;
+            var temperature = new Temperature();
+            double.TryParse(txtBox1.Text, out _output);
+            string item1 = comboBox1?.Text;
+            string item2 = comboBox2?.Text;
+
+
+            if (item1 is "Celsius" && item2 is "Fahrenheit")
+            {
+                _output = temperature.CelsiusToFahrenheit(_output);
+            }
+
+            if (item1 is "Celsius" && item2 is "Kelvin")
+            {
+                _output = temperature.CelsiusToKelvin(_output);
+            }
+
+            if (item1 is "Kelvin" && item2 is "Celsius")
+            {
+                _output = temperature.KelvinToCelsius(_output);
+            }
+
+            if (item1 is "Kelvin" && item2 is "Fahrenheit")
+            {
+                _output = temperature.KelvinToFahrenheit(_output);
+            }
+
+            if (item1 is "Fahrenheit" && item2 is "Celsius")
+            {
+                _output = temperature.FahrenheitToCelsius(_output);
+            }
+
+            if (item1 is "Fahrenheit" && item2 is "Kelvin")
+            {
+                _output = temperature.FahrenheitToKelvin(_output);
+            }
+
+            if (txtBox1.Text != "0")
+            {
+                txtBox2.Text = _output.ToString();
+            }
+        }
+
+
     }
 
 }
