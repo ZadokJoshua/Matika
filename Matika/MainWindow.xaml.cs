@@ -1,6 +1,8 @@
 ﻿using Calculations.Converter;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,13 +23,16 @@ namespace Matika
     /// </summary>
     public partial class MainWindow : Window
     {
-        public List<string> SourceTemp { get; private set; } = new List<string>() { "Celsius", "Fahrenheit", "Kelvin"};
-
-        public string SourceTempSelectedItem { get; set; }
-
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private ICollection<string> sourceTemps = new Collection<string>() { "Celsius", "Fahrenheit", "Kelvin" };
+        public ICollection<string> SourceTemps
+        {
+            get { return sourceTemps; }
+            set { sourceTemps = value; OnPropertyChanged(nameof(SourceTemps)); }
         }
 
         private void DeleteBtn_Click(object sender, RoutedEventArgs e)
@@ -59,7 +64,7 @@ namespace Matika
                 txtBox1.Text = "0";
                 txtBox2.Text = "0";
             }
-            else if(selectedValue is ".")
+            else if (selectedValue is ".")
             {
                 if (txtBox1.Text.Contains("."))
                 {
@@ -86,12 +91,16 @@ namespace Matika
 
         private void TextBox1_Changed(object sender, TextChangedEventArgs e)
         {
-            ChangedEventHandler(comboBox1, comboBox2);
-        }
+            ChangedEventHandler();
 
-        private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        }
+        private void ChangedEventHandler()
         {
-            ChangedEventHandler(comboBox1, comboBox2);
+            if (txtBox2 != null)
+            {
+                var temperature = new Temperature();
+                txtBox2.Text = temperature.ChangedHandler(txtBox1.Text, comboBox1SelectedItem, comboBox2SelectedItem);
+            }
         }
 
         private void plusOrMinusBtn_Click(object sender, RoutedEventArgs e)
@@ -101,52 +110,43 @@ namespace Matika
             txtBox1.Text = answer.ToString();
         }
 
-        private void ChangedEventHandler(ComboBox comboBox1, ComboBox comboBox2)
+        private string comboBox1SelectedItem = "Kelvin";
+        public string ComboBox1SelectedItem
         {
-            double _output;
-            var temperature = new Temperature();
-            double.TryParse(txtBox1.Text, out _output);
-            string item1 = comboBox1?.Text;
-            string item2 = comboBox2?.Text;
-
-
-            if (item1 is "Celsius" && item2 is "Fahrenheit")
+            get { return comboBox1SelectedItem; }
+            set
             {
-                _output = temperature.CelsiusToFahrenheit(_output);
-            }
-
-            if (item1 is "Celsius" && item2 is "Kelvin")
-            {
-                _output = temperature.CelsiusToKelvin(_output);
-            }
-
-            if (item1 is "Kelvin" && item2 is "Celsius")
-            {
-                _output = temperature.KelvinToCelsius(_output);
-            }
-
-            if (item1 is "Kelvin" && item2 is "Fahrenheit")
-            {
-                _output = temperature.KelvinToFahrenheit(_output);
-            }
-
-            if (item1 is "Fahrenheit" && item2 is "Celsius")
-            {
-                _output = temperature.FahrenheitToCelsius(_output);
-            }
-
-            if (item1 is "Fahrenheit" && item2 is "Kelvin")
-            {
-                _output = temperature.FahrenheitToKelvin(_output);
-            }
-
-            if (txtBox1.Text != "0")
-            {
-                txtBox2.Text = _output.ToString();
+                comboBox1SelectedItem = value;
+                OnPropertyChanged(nameof(ComboBox1SelectedItem));
+                OnSelectedChanged();
             }
         }
 
-    
+        private string comboBox2SelectedItem = "Fahrenheit";
+        public string ComboBox2SelectedItem
+        {
+            get { return comboBox2SelectedItem; }
+            set
+            {
+                comboBox2SelectedItem = value;
+                OnPropertyChanged(nameof(ComboBox2SelectedItem));
+                OnSelectedChanged();
+            }
+        }
+        private void OnSelectedChanged()
+        {
+            ChangedEventHandler();
+        }
+
+        protected void OnPropertyChanged(string name)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(name));
+            }
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 
 }
