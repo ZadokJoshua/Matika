@@ -49,9 +49,9 @@ namespace Calculations.Converter.Angle
             return Math.Round(_output);
         }
 
-        public string AnglesConverter()
-        {
+        //public string AnglesConverter()
+        //{
 
-        }
+        //}
     }
 }
