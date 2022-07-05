@@ -8,233 +8,64 @@
         MinWidth="400"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
         Title="Matika" Height="635" Width="402"
-        Background="#1F1F1F">
+        Background="#1F1F1F"
+        ResizeMode="NoResize">
 
     <Window.Resources>
-        <!--Button Style-->
-        <Style TargetType="Button" 
-               x:Key="ButtonStyle">
-            <Setter Property="Background" 
-                    Value="#060606"/>
-            <Setter Property="Foreground" 
-                    Value="White"/>
-            <Setter Property="FontSize" 
-                    Value="25"/>
-            <Setter Property="BorderBrush" 
-                    Value="Transparent"/>
-        </Style>
-
-        <!--TextBox-->
-        <!--TextBox Style Reference: https://stackoverflow.com/questions/40088370/wpf-text-box-border-changes-color-upon-mouse-entry-->
-        <Style TargetType="TextBox"
-               x:Key="TextBoxStyle">
-            <Setter Property="Text" Value="0"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="FontSize" Value="50"/>
-            <Setter Property="FontWeight" Value="SemiBold"/>
+        <Style x:Key="MenuItemsStyle" TargetType="MenuItem">
             <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="BorderBrush" Value="Transparent"/>
-            <Setter Property="IsReadOnly" Value="True"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="TextBox">
-                        <Border BorderThickness="{TemplateBinding Border.BorderThickness}"
-                  BorderBrush="{TemplateBinding Border.BorderBrush}"
-                  Background="{TemplateBinding Panel.Background}"
-                  Name="border"
-                  SnapsToDevicePixels="True">
-                            <ScrollViewer HorizontalScrollBarVisibility="Hidden"
-                           VerticalScrollBarVisibility="Hidden"
-                           Name="PART_ContentHost"
-                           Focusable="False" />
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="UIElement.IsMouseOver" Value="True">
-                                <Setter Property="Border.BorderBrush" TargetName="border" 
-                    Value="Transparent"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
+            <Setter Property="Foreground" Value="Black"/>
         </Style>
-
-        
-        <!--ComboBox Style-->
-        <Style x:Key="ComboBoxStyle" 
-               TargetType="ComboBox">
-            <Setter Property="Width" Value="120"/>
-            <Setter Property="FontSize" Value="15"/>
-            <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="Margin" Value="5"/>
-            <Setter Property="ItemsSource" Value="{Binding SourceTemp}"/>
-        </Style>
-
     </Window.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!--Output Display-->
-            <Grid Margin="5">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition />
-            </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" 
+                    VerticalAlignment="Center">
+            <Menu Background="Transparent"
+                  Foreground="Black"  
+                  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
+                <MenuItem Width="24" 
+                          FlowDirection="RightToLeft"
+                          >
+                    <MenuItem.Icon>
+                        <Image Source="\Images\menu.png" 
+                               Height="20"/>
+                    </MenuItem.Icon>
+                    <MenuItem Header="Temperature"
+                              Click="Button_Click"
+                              Style="{StaticResource MenuItemsStyle}">
+                        <MenuItem.Icon>
+                            <Image Source="\Images\MenuImages\thermometer.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Area"
+                              Click="Button2_Click"
+                              Style="{StaticResource MenuItemsStyle}">
+                        <MenuItem.Icon>
+                            <Image Source="\Images\MenuImages\angle.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
 
-            <StackPanel Orientation="Horizontal" 
-                        VerticalAlignment="Center">
-                <Button Background="Transparent" 
-                        BorderBrush="Transparent">
-                    <Image Source="\Images\menu.png" 
-                           Height="20" 
-                           Margin="10"/>
-                </Button>
-                
-              
 
-                <Label Content="Temperature" 
-                       FontSize="30" 
-                       Foreground="White" 
-                       FontWeight="Regular"/>
-            </StackPanel>
+                </MenuItem>
+            </Menu>
+            
+            <Label Content="Temperature" 
+                   FontSize="30" 
+                   Foreground="White" 
+                   FontWeight="Regular"
+                   x:Name="PageDescriptionLabel"/>
+        </StackPanel>
 
-            <TextBox Grid.Row="1" 
-                     x:Name="txtBox1"
-                     TextChanged="TextBox1_Changed"
-                     Style="{StaticResource TextBoxStyle}"/>
-            <!--IsReadOnly allows the TextBox to take input from the buttons only-->
 
-            <ComboBox Grid.Row="2" 
-                      x:Name="comboBox1"
-                      Style="{StaticResource ComboBoxStyle}"
-                      ItemsSource="{Binding SourceTemps, UpdateSourceTrigger=PropertyChanged}"
-                      SelectedItem="{Binding ComboBox1SelectedItem, UpdateSourceTrigger=PropertyChanged}"
-                      Margin="6,5,0,5"
-                      />
+        <Frame Grid.Row="1" 
+               x:Name="MainPage"
+               NavigationUIVisibility="Hidden"/>
 
-            <TextBox Grid.Row="3" 
-                     x:Name="txtBox2"
-                     TextChanged="TextBox1_Changed"
-                     Style="{StaticResource TextBoxStyle}"
-                     />
-
-            <ComboBox Grid.Row="4" 
-                      x:Name="comboBox2"
-                      Style="{StaticResource ComboBoxStyle}"
-                      ItemsSource="{Binding SourceTemps, UpdateSourceTrigger=PropertyChanged}"
-                      SelectedItem="{Binding ComboBox2SelectedItem, UpdateSourceTrigger=PropertyChanged}"
-                      />
-        </Grid>
-
-        <!--Button Grid-->
-        <Grid Grid.Row="1" Margin="4">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-
-            <Button Content="CE" 
-                    Grid.Column="1" 
-                    Style="{StaticResource ButtonStyle}" 
-                    Background="#131313"
-                    x:Name="ceBtn"
-                    Click="Btn_Click"/>
-
-            <Button Grid.Column="2"  
-                    Style="{StaticResource ButtonStyle}" 
-                    Background="#131313"
-                    x:Name="deleteBtn"
-                    Click="DeleteBtn_Click" Grid.ColumnSpan="2">
-                <Image Source="\Images\clear.png" 
-                       Height="45"/>
-            </Button>
-
-            <Button Content="7"
-                    Grid.Row="1" 
-                    Style="{StaticResource ButtonStyle}"
-                    x:Name="sevenBtn"
-                    Click="Btn_Click"/>
-            <Button Content="8" Grid.Row="1" 
-                    Grid.Column="1" 
-                    Style="{StaticResource ButtonStyle}"
-                    x:Name="eightBtn"
-                    Click="Btn_Click"/>
-            <Button Content="9" 
-                    Grid.Row="1" 
-                    Grid.Column="2" 
-                    Style="{StaticResource ButtonStyle}"
-                    x:Name="nineBtn"
-                    Click="Btn_Click"/>
-            <Button Content="4" 
-                    Grid.Row="2" 
-                    Style="{StaticResource ButtonStyle}"
-                    x:Name="fourBtn"
-                    Click="Btn_Click"/>
-            <Button Content="5" 
-                    Grid.Row="2" 
-                    Grid.Column="1" 
-                    Style="{StaticResource ButtonStyle}"
-                    x:Name="fiveBtn"
-                    Click="Btn_Click"/>
-            <Button Content="6" 
-                    Grid.Row="2" 
-                    Grid.Column="2" 
-                    Style="{StaticResource ButtonStyle}"
-                    x:Name="sixBtn"
-                    Click="Btn_Click"/>
-            <Button Content="1" 
-                    Grid.Row="3" 
-                    Style="{StaticResource ButtonStyle}"
-                    x:Name="oneBtn"
-                    Click="Btn_Click"/>
-            <Button Content="2" 
-                    Grid.Row="3" 
-                    Grid.Column="1" 
-                    Style="{StaticResource ButtonStyle}"
-                    x:Name="twoBtn"
-                    Click="Btn_Click"/>
-            <Button Content="3" 
-                    Grid.Row="3" 
-                    Grid.Column="2" 
-                    Style="{StaticResource ButtonStyle}"
-                    x:Name="threeBtn"
-                    Click="Btn_Click"/>
-            <Button Content="+/-" 
-                    Grid.Row="4" 
-                    Style="{StaticResource ButtonStyle}"
-                    x:Name="plusOrMinusBtn"
-                    Click="plusOrMinusBtn_Click"/>
-            <Button Content="0" 
-                    Grid.Row="4" 
-                    Grid.Column="1" 
-                    Style="{StaticResource ButtonStyle}"
-                    x:Name="zeroBtn"
-                    Click="Btn_Click"/>
-            <Button Content="." 
-                    Grid.Row="4" 
-                    Grid.Column="2" 
-                    Style="{StaticResource ButtonStyle}"
-                    x:Name="dotBtn"
-                    Click="Btn_Click"/>
-        </Grid>
     </Grid>
 </Window>

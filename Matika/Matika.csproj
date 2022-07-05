@@ -10,6 +10,8 @@
   <ItemGroup>
     <None Remove="Images\clear.png" />
     <None Remove="Images\menu.png" />
+    <None Remove="Images\MenuImages\angle.png" />
+    <None Remove="Images\MenuImages\thermometer.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,10 +25,12 @@
     <Resource Include="Images\menu.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Pages\" />
+    <Resource Include="Images\MenuImages\angle.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\MenuImages\thermometer.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,162 @@
+﻿<Page x:Class="Matika.Pages.TemperaturePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Matika.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      DataContext="{Binding RelativeSource={RelativeSource Self}}"
+      Title="TemperaturePage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="250"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--Output Display-->
+        <Grid Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+
+
+            <TextBox Grid.Row="1" 
+                     x:Name="txtBox1"
+                     TextChanged="TextBox1_Changed"
+                     Style="{StaticResource TextBoxStyle}"/>
+            <!--IsReadOnly allows the TextBox to take input from the buttons only-->
+
+            <ComboBox Grid.Row="2" 
+                      x:Name="comboBox1"
+                      Style="{StaticResource ComboBoxStyle}"
+                      ItemsSource="{Binding SourceTemps, UpdateSourceTrigger=PropertyChanged}"
+                      SelectedItem="{Binding ComboBox1SelectedItem, UpdateSourceTrigger=PropertyChanged}"
+                      />
+
+            <TextBox Grid.Row="3" 
+                     x:Name="txtBox2"
+                     TextChanged="TextBox1_Changed"
+                     Style="{StaticResource TextBoxStyle}"
+                     />
+
+            <ComboBox Grid.Row="4" 
+                      x:Name="comboBox2"
+                      Style="{StaticResource ComboBoxStyle}"
+                      ItemsSource="{Binding SourceTemps, UpdateSourceTrigger=PropertyChanged}"
+                      SelectedItem="{Binding ComboBox2SelectedItem, UpdateSourceTrigger=PropertyChanged}"
+                      />
+        </Grid>
+
+        <!--Button Grid-->
+        <Grid Grid.Row="1" Margin="4">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Content="CE" 
+                    Grid.Column="1" 
+                    Style="{StaticResource ButtonStyle}" 
+                    Background="#131313"
+                    x:Name="ceBtn"
+                    Click="Btn_Click"/>
+
+            <Button Grid.Column="2"  
+                    Style="{StaticResource ButtonStyle}" 
+                    Background="#131313"
+                    x:Name="deleteBtn"
+                    Click="DeleteBtn_Click" Grid.ColumnSpan="2">
+                <Image Source="\Images\clear.png" 
+                       Height="45"/>
+            </Button>
+
+            <Button Content="7"
+                    Grid.Row="1" 
+                    Style="{StaticResource ButtonStyle}"
+                    x:Name="sevenBtn"
+                    Click="Btn_Click"/>
+            <Button Content="8" Grid.Row="1" 
+                    Grid.Column="1" 
+                    Style="{StaticResource ButtonStyle}"
+                    x:Name="eightBtn"
+                    Click="Btn_Click"/>
+            <Button Content="9" 
+                    Grid.Row="1" 
+                    Grid.Column="2" 
+                    Style="{StaticResource ButtonStyle}"
+                    x:Name="nineBtn"
+                    Click="Btn_Click"/>
+            <Button Content="4" 
+                    Grid.Row="2" 
+                    Style="{StaticResource ButtonStyle}"
+                    x:Name="fourBtn"
+                    Click="Btn_Click"/>
+            <Button Content="5" 
+                    Grid.Row="2" 
+                    Grid.Column="1" 
+                    Style="{StaticResource ButtonStyle}"
+                    x:Name="fiveBtn"
+                    Click="Btn_Click"/>
+            <Button Content="6" 
+                    Grid.Row="2" 
+                    Grid.Column="2" 
+                    Style="{StaticResource ButtonStyle}"
+                    x:Name="sixBtn"
+                    Click="Btn_Click"/>
+            <Button Content="1" 
+                    Grid.Row="3" 
+                    Style="{StaticResource ButtonStyle}"
+                    x:Name="oneBtn"
+                    Click="Btn_Click"/>
+            <Button Content="2" 
+                    Grid.Row="3" 
+                    Grid.Column="1" 
+                    Style="{StaticResource ButtonStyle}"
+                    x:Name="twoBtn"
+                    Click="Btn_Click"/>
+            <Button Content="3" 
+                    Grid.Row="3" 
+                    Grid.Column="2" 
+                    Style="{StaticResource ButtonStyle}"
+                    x:Name="threeBtn"
+                    Click="Btn_Click"/>
+            <Button Content="+/-" 
+                    Grid.Row="4" 
+                    Style="{StaticResource ButtonStyle}"
+                    x:Name="plusOrMinusBtn"
+                    Click="plusOrMinusBtn_Click"/>
+            <Button Content="0" 
+                    Grid.Row="4" 
+                    Grid.Column="1" 
+                    Style="{StaticResource ButtonStyle}"
+                    x:Name="zeroBtn"
+                    Click="Btn_Click"/>
+            <Button Content="." 
+                    Grid.Row="4" 
+                    Grid.Column="2" 
+                    Style="{StaticResource ButtonStyle}"
+                    x:Name="dotBtn"
+                    Click="Btn_Click"/>
+        </Grid>
+
+    </Grid>
+</Page>

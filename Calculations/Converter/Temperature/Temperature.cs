@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Calculations.Converter
+namespace Calculations.Converter.Temperature
 {
     public class Temperature
     {
@@ -36,13 +36,13 @@ namespace Calculations.Converter
 
         private double CelsiusToFahrenheit(double temperature)
         {
-            _output = (temperature * 9 / 5) + 32;
+            _output = temperature * 9 / 5 + 32;
             return Math.Round(_output, 2);
         }
 
         private double KelvinToFahrenheit(double temperature)
         {
-            _output = ((temperature - 273.15) * (9 / 5)) + 32;
+            _output = (temperature - 273.15) * (9 / 5) + 32;
             return Math.Round(_output, 2);
         }
 
@@ -60,7 +60,7 @@ namespace Calculations.Converter
 
         private double FahrenheitToKelvin(double temperature)
         {
-            _output = ((temperature - 32) * (5 / 9)) + 273.15;
+            _output = (temperature - 32) * (5 / 9) + 273.15;
             return Math.Round(_output, 2);
         }
 

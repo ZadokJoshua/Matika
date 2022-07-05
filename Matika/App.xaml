@@ -4,6 +4,64 @@
              xmlns:local="clr-namespace:Matika"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <!--Button Style-->
+        <Style TargetType="Button" 
+               x:Key="ButtonStyle">
+            <Setter Property="Background" 
+                    Value="#060606"/>
+            <Setter Property="Foreground" 
+                    Value="White"/>
+            <Setter Property="FontSize" 
+                    Value="25"/>
+            <Setter Property="BorderBrush" 
+                    Value="Transparent"/>
+        </Style>
+
+        <!--TextBox-->
+        <!--TextBox Style Reference: https://stackoverflow.com/questions/40088370/wpf-text-box-border-changes-color-upon-mouse-entry-->
+        <Style TargetType="TextBox"
+               x:Key="TextBoxStyle">
+            <Setter Property="Text" Value="0"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="50"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border BorderThickness="{TemplateBinding Border.BorderThickness}"
+                  BorderBrush="{TemplateBinding Border.BorderBrush}"
+                  Background="{TemplateBinding Panel.Background}"
+                  Name="border"
+                  SnapsToDevicePixels="True">
+                            <ScrollViewer HorizontalScrollBarVisibility="Hidden"
+                           VerticalScrollBarVisibility="Hidden"
+                           Name="PART_ContentHost"
+                           Focusable="False" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                <Setter Property="Border.BorderBrush" TargetName="border" 
+                    Value="Transparent"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+        <!--ComboBox Style-->
+        <Style x:Key="ComboBoxStyle" 
+               TargetType="ComboBox">
+            <Setter Property="Width" Value="120"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="ItemsSource" Value="{Binding SourceTemp}"/>
+        </Style>
+
     </Application.Resources>
 </Application>
