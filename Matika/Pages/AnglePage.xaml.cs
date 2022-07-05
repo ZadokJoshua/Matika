@@ -107,11 +107,11 @@ namespace Matika.Pages
         }
         private void ChangedEventHandler()
         {
-            if (txtBox2 != null)
-            {
-                var angle = new Angle();
-                txtBox2.Text = angle.ChangedHandler(txtBox1.Text, comboBox1SelectedItem, comboBox2SelectedItem);
-            }
+            //if (txtBox2 != null)
+            //{
+            //    var angle = new Angle();
+            //    txtBox2.Text = angle.ChangedHandler(txtBox1.Text, comboBox1SelectedItem, comboBox2SelectedItem);
+            //}
         }
 
 
