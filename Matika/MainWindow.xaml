@@ -26,12 +26,15 @@
 
         <StackPanel Orientation="Horizontal" 
                     VerticalAlignment="Center">
+            
             <Menu Background="Transparent"
                   Foreground="Black"  
                   HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
+                
                 <MenuItem Width="24" 
                           FlowDirection="RightToLeft"
                           >
+                    
                     <MenuItem.Icon>
                         <Image Source="\Images\menu.png" 
                                Height="20"/>
@@ -43,6 +46,7 @@
                             <Image Source="\Images\MenuImages\thermometer.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
+                    
                     <MenuItem Header="Area"
                               Click="Button2_Click"
                               Style="{StaticResource MenuItemsStyle}">
@@ -50,13 +54,19 @@
                             <Image Source="\Images\MenuImages\angle.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
-
+                    
+                    <MenuItem Header="Pressure"
+                              Click="Button2_Click"
+                              Style="{StaticResource MenuItemsStyle}">
+                        <MenuItem.Icon>
+                            <Image Source="\Images\MenuImages\gauge.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
 
                 </MenuItem>
             </Menu>
             
-            <Label Content="Temperature" 
-                   FontSize="30" 
+            <Label FontSize="30" 
                    Foreground="White" 
                    FontWeight="Regular"
                    x:Name="PageDescriptionLabel"/>

@@ -13,7 +13,7 @@ namespace Calculations.Converter.Angle
         // Degrees and Radians
         private double DegreeTORadian(double _angle)
         {
-            _output = _angle * (Math.PI /180);
+            _output = _angle * (Math.PI / 180);
             return Math.Round(_output, 2);
         }
 
@@ -49,9 +49,44 @@ namespace Calculations.Converter.Angle
             return Math.Round(_output);
         }
 
-        //public string AnglesConverter()
-        //{
+        public string ChangedHandler(string inputNum, string comboBox1SelectedItem, string comboBox2SelectedItem)
+        {
+            double _output;
+            double.TryParse(inputNum, out _output);
+            string item1 = comboBox1SelectedItem;
+            string item2 = comboBox2SelectedItem;
+            if (item1 is "Radians" && item2 is "Degrees")
+            {
+                _output = RadianToDegree(_output);
+            }
 
-        //}
+            if (item1 is "Radians" && item2 is "Gradians")
+            {
+                _output = RadianToGradian(_output);
+            }
+
+            if (item1 is "Degrees" && item2 is "Radians")
+            {
+                _output = DegreeTORadian(_output);
+            }
+
+            if (item1 is "Degrees" && item2 is "Gradians")
+            {
+                _output = DegreesToGradians(_output);
+            }
+
+            if (item1 is "Gradians" && item2 is "Degrees")
+            {
+                _output = GradiansToDegrees(_output);
+            }
+
+            if (item1 is "Gradians" && item2 is "Radians")
+            {
+                _output = GradianToRadian(_output);
+            }
+
+            var sample = string.IsNullOrEmpty(inputNum) ? "0" : _output.ToString();
+            return sample;
+        }
     }
 }

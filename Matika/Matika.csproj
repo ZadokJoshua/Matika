@@ -11,6 +11,7 @@
     <None Remove="Images\clear.png" />
     <None Remove="Images\menu.png" />
     <None Remove="Images\MenuImages\angle.png" />
+    <None Remove="Images\MenuImages\gauge.png" />
     <None Remove="Images\MenuImages\thermometer.png" />
   </ItemGroup>
 
@@ -26,6 +27,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\MenuImages\angle.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\MenuImages\gauge.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\MenuImages\thermometer.png">

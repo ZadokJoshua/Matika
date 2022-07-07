@@ -32,10 +32,10 @@ namespace Matika.Pages
         public ICollection<string> Unit
         {
             get { return _unit; }
-            set 
-            { 
-                _unit = value; 
-                OnPropertyChanged(nameof(Unit)); 
+            set
+            {
+                _unit = value;
+                OnPropertyChanged(nameof(Unit));
             }
         }
 
@@ -57,6 +57,17 @@ namespace Matika.Pages
                 else
                 {
                     txtBox1.Text = $"{txtBox1.Text}.";
+                }
+            }
+            else if (selectedValue is "0")
+            {
+                if (txtBox1.Text == "-0")
+                {
+                    // Do nothing
+                }
+                else
+                {
+                    txtBox1.Text = $"{txtBox1.Text}{selectedValue}";
                 }
             }
             else
@@ -107,11 +118,11 @@ namespace Matika.Pages
         }
         private void ChangedEventHandler()
         {
-            //if (txtBox2 != null)
-            //{
-            //    var angle = new Angle();
-            //    txtBox2.Text = angle.ChangedHandler(txtBox1.Text, comboBox1SelectedItem, comboBox2SelectedItem);
-            //}
+            if (txtBox2 != null)
+            {
+                var angle = new Angle();
+                txtBox2.Text = angle.ChangedHandler(txtBox1.Text, comboBox1SelectedItem, comboBox2SelectedItem);
+            }
         }
 
 

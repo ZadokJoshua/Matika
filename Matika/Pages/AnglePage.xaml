@@ -28,8 +28,6 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
 
-
-
             <TextBox Grid.Row="1" 
                      x:Name="txtBox1"
                      TextChanged="TextBox1_Changed"
@@ -39,7 +37,7 @@
             <ComboBox Grid.Row="2" 
                       x:Name="comboBox1"
                       Style="{StaticResource ComboBoxStyle}"
-                      ItemsSource="{Binding SourceTemps, UpdateSourceTrigger=PropertyChanged}"
+                      ItemsSource="{Binding Unit, UpdateSourceTrigger=PropertyChanged}"
                       SelectedItem="{Binding ComboBox1SelectedItem, UpdateSourceTrigger=PropertyChanged}"/>
 
             <TextBox Grid.Row="3" 
@@ -51,8 +49,8 @@
             <ComboBox Grid.Row="4" 
                       x:Name="comboBox2"
                       Style="{StaticResource ComboBoxStyle}"
-                      ItemsSource="{Binding SourceTemps, UpdateSourceTrigger=PropertyChanged}"
-                      SelectedItem="{Binding ComboBox1SelectedItem, UpdateSourceTrigger=PropertyChanged}"
+                      ItemsSource="{Binding Unit, UpdateSourceTrigger=PropertyChanged}"
+                      SelectedItem="{Binding ComboBox2SelectedItem, UpdateSourceTrigger=PropertyChanged}"
                       />
         </Grid>
 

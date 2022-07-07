@@ -27,6 +27,8 @@ namespace Matika
         public MainWindow()
         {
             InitializeComponent();
+            MainPage.Content = new TemperaturePage();
+            PageDescriptionLabel.Content = "Temperature";
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
